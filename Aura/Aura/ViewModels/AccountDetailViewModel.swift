@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class AccountDetailViewModel: ObservableObject {
     @Published var totalAmount: String = "€12,345.67"
@@ -18,5 +19,27 @@ class AccountDetailViewModel: ObservableObject {
     struct Transaction {
         let description: String
         let amount: String
+    }
+    
+    func accountSummary(auraState: AuraState) {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.currencyCode = "EUR"
+        formatter.numberStyle = .currency
+        
+        totalAmount = formatter.string(for: auraState.account.currentBalance) ?? ""
+        
+        let nb = min(auraState.account.transactions.count, 3)
+        recentTransactions = []
+        for i in 0..<nb {
+            let desc = auraState.account.transactions[i].label
+            let amount = formatter.string(for: auraState.account.transactions[i].value) ?? ""
+            
+            recentTransactions += [Transaction(description: desc, amount: amount)]
+        }
+        
+        print(totalAmount)
+        print(recentTransactions)
     }
 }

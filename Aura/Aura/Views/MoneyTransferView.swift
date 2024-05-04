@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MoneyTransferView: View {
     @ObservedObject var viewModel = MoneyTransferViewModel()
+    @EnvironmentObject var auraState: AuraState
 
         @State private var animationScale: CGFloat = 1.0
 
@@ -52,7 +53,9 @@ struct MoneyTransferView: View {
                         .keyboardType(.decimalPad)
                 }
 
-                Button(action: viewModel.sendMoney) {
+                Button(action:  {
+                    viewModel.sendMoney(auraState: auraState)
+                }) {
                     HStack {
                         Image(systemName: "arrow.right.circle.fill")
                         Text("Send")

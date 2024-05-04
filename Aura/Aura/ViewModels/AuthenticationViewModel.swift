@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class AuthenticationViewModel: ObservableObject {
     @Published var username: String = ""
@@ -17,25 +18,15 @@ class AuthenticationViewModel: ObservableObject {
         self.onLoginSucceed = callback
     }
     
-    func login() {
-//        print("login with \(username) and \(password)")
-//        onLoginSucceed()
-        Task{
+    func login(auraState: AuraState) {
+        Task{ @MainActor in
             do{
-                let isOk = try await AuraAPIService().isRunningOk()
-                print("isRunningOk : \(isOk)")
-                let token = try await AuraAPIService().askForAuthenticationToken(for: AuraIdentity(username: username, password: password))
-                print("token : \(token)")
-                let account = try await AuraAPIService().askForDetailedAccount(from: token)
-                print(account.currentBalance)
-                print(account.transactions[0].label)
-                print(account.transactions[0].value)
-                let ret = try await AuraAPIService().askForMoneyTransfer(from: token, to: AuraTransferInfos(recipient: "+33684731985", amount: 12.40))
-                print("askForMoneyTransfer : \(ret)")
+                auraState.token = try await AuraAPIService().askForAuthenticationToken(for: AuraIdentity(username: username, password: password))
+                onLoginSucceed()
+                auraState.account = try await AuraAPIService().askForDetailedAccount(from: auraState.token)
             }catch{
                 print("Error \(error) AuraAPIService")
             }
          }
-        
     }
 }

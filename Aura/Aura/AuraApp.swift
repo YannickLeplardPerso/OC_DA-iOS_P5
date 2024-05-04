@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct AuraApp: App {
     @StateObject var viewModel = AppViewModel()
+    @StateObject var auraState = AuraState()
     
     var body: some Scene {
         WindowGroup {
@@ -21,6 +22,7 @@ struct AuraApp: App {
                                 Image(systemName: "person.crop.circle")
                                 Text("Account")
                             }
+                            .environmentObject(auraState)
                         
                         MoneyTransferView()
                             .tabItem {
@@ -33,11 +35,13 @@ struct AuraApp: App {
                     AuthenticationView(viewModel: viewModel.authenticationViewModel)
                         .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity),
                                                 removal: .move(edge: .top).combined(with: .opacity)))
+                        //.environmentObject(auraState)
                     
                 }
             }
             .accentColor(Color(hex: "#94A684"))
             .animation(.easeInOut(duration: 0.5), value: UUID())
         }
+        .environmentObject(auraState)
     }
 }
