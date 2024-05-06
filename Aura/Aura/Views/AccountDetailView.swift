@@ -11,6 +11,8 @@ struct AccountDetailView: View {
     @ObservedObject var viewModel: AccountDetailViewModel
     @EnvironmentObject var auraState: AuraState
     
+    @State private var showingSheet = false
+    
     var body: some View {
         VStack(spacing: 20) {
             // Large Header displaying total amount
@@ -50,10 +52,9 @@ struct AccountDetailView: View {
                 }
             }
             
-            // Button to see details of transactions
+            // Button to see details of transactions in a modal view
             Button(action: {
-                // Implement action to show transaction details
-                //viewModel.accountSummary(auraState: auraState)
+                showingSheet.toggle()
             }) {
                 HStack {
                     Image(systemName: "list.bullet")
@@ -65,22 +66,22 @@ struct AccountDetailView: View {
                 .cornerRadius(8)
             }
             .padding([.horizontal, .bottom])
+            .sheet(isPresented: $showingSheet) {
+                TransactionListView()
+            }
             
             Spacer()
         }
         // update with account summary
         .onAppear {
-            // todo
-            print("AccountDetailView")
-            print(auraState.account)
             viewModel.accountSummary(auraState: auraState)
         }
         .onTapGesture {
-                    self.endEditing(true)  // This will dismiss the keyboard when tapping outside
-                }
+            self.endEditing(true)  // This will dismiss the keyboard when tapping outside
+        }
     }
 }
 
-#Preview {
-    AccountDetailView(viewModel: AccountDetailViewModel())
-}
+//#Preview {
+//    AccountDetailView(viewModel: AccountDetailViewModel())
+//}

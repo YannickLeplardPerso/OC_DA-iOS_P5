@@ -1,16 +1,15 @@
 //
-//  AccountDetailViewModel.swift
+//  TransactionListViewModel.swift
 //  Aura
 //
-//  Created by Vincent Saluzzo on 29/09/2023.
+//  Created by Yannick LEPLARD on 06/05/2024.
 //
 
 import Foundation
-import SwiftUI
+//import SwiftUI
 
-class AccountDetailViewModel: ObservableObject {
-    @Published var totalAmount: String = "€12,345.67"
-    @Published var recentTransactions: [Transaction] = [
+class TransactionListViewModel: ObservableObject {
+    @Published var transactions: [Transaction] = [
         Transaction(description: "Starbucks", amount: "-€5.50"),
         Transaction(description: "Amazon Purchase", amount: "-€34.99"),
         Transaction(description: "Salary", amount: "+€2,500.00")
@@ -21,15 +20,11 @@ class AccountDetailViewModel: ObservableObject {
         let amount: String
     }
     
-    func accountSummary(auraState: AuraState) {
-        totalAmount = MoneyFormatter().euros.string(for: auraState.account.currentBalance) ?? ""
-        
-        recentTransactions = auraState.account.transactions
-            .suffix(3)
+    func all(auraState: AuraState) {
+        transactions = auraState.account.transactions
             .map { transaction in
                 let desc = transaction.label
                 let amount = MoneyFormatter().euros.string(for: transaction.value) ?? ""
-                
                 return Transaction(description: desc, amount: amount)
             }
     }

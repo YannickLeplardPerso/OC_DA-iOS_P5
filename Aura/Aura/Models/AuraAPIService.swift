@@ -17,28 +17,27 @@ import Foundation
 
 // Structures de données compatibles JSON
 struct AuraIdentity: Codable {
-    var username: String = ""
-    var password: String = ""
+    let username: String
+    let password: String
 }
 
 struct AuraToken: Codable {
-    var token: String = ""
+    let token: String
 }
 
 struct AuraAccount: Codable {
-    var currentBalance: Double = 0.0
-    var transactions: [AuraTransaction] = []
+    var currentBalance = 0.0
+    var transactions = [AuraTransaction]()
 }
-//extension AuraAccount {
-    struct AuraTransaction: Codable {
-        var label: String = ""
-        var value: Double = 0.0
-    }
-//}
+
+struct AuraTransaction: Codable {
+    let label: String
+    let value: Double
+}
 
 struct AuraTransferInfos: Codable {
-    var recipient: String = ""
-    var amount: Double = 0.0
+    let recipient: String
+    let amount: Double
 }
 
 

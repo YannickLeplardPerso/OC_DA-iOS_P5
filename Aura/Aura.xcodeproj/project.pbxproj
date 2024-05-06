@@ -22,6 +22,9 @@
 		ACC34DAB2BE23FBE0001CF69 /* AuraAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DAA2BE23FBE0001CF69 /* AuraAPIService.swift */; };
 		ACC34DAF2BE269E60001CF69 /* AuraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DAE2BE269E60001CF69 /* AuraError.swift */; };
 		ACC34DB12BE2B1480001CF69 /* AuraState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DB02BE2B1480001CF69 /* AuraState.swift */; };
+		ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */; };
+		ACCCD65F2BE9039A003FA80C /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */; };
+		ACCCD6612BE9378C003FA80C /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		ACC34DAA2BE23FBE0001CF69 /* AuraAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraAPIService.swift; sourceTree = "<group>"; };
 		ACC34DAE2BE269E60001CF69 /* AuraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraError.swift; sourceTree = "<group>"; };
 		ACC34DB02BE2B1480001CF69 /* AuraState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraState.swift; sourceTree = "<group>"; };
+		ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
+		ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 			children = (
 				53D418902AC70A920070ADB1 /* AuthenticationView.swift */,
 				53D418922AC70AB10070ADB1 /* AccountDetailView.swift */,
+				ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */,
 				53D418942AC70ABF0070ADB1 /* MoneyTransferView.swift */,
 			);
 			path = Views;
@@ -108,6 +115,7 @@
 				53D4188C2AC709F40070ADB1 /* AppViewModel.swift */,
 				53D4189A2AC711990070ADB1 /* AuthenticationViewModel.swift */,
 				53D4189C2AC715AA0070ADB1 /* AccountDetailViewModel.swift */,
+				ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */,
 				53D4189E2AC717890070ADB1 /* MoneyTransferViewModel.swift */,
 			);
 			path = ViewModels;
@@ -118,6 +126,7 @@
 			children = (
 				53D418982AC70FD80070ADB1 /* Color+Extensions.swift */,
 				53D418A02AC71B8F0070ADB1 /* View+Extensions.swift */,
+				ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -203,14 +212,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				53D4187C2AC7099A0070ADB1 /* AuraApp.swift in Sources */,
+				ACCCD65F2BE9039A003FA80C /* TransactionListViewModel.swift in Sources */,
 				53D418952AC70ABF0070ADB1 /* MoneyTransferView.swift in Sources */,
 				53D4189B2AC711990070ADB1 /* AuthenticationViewModel.swift in Sources */,
 				53D4189D2AC715AA0070ADB1 /* AccountDetailViewModel.swift in Sources */,
 				53D418912AC70A920070ADB1 /* AuthenticationView.swift in Sources */,
+				ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */,
 				ACC34DAF2BE269E60001CF69 /* AuraError.swift in Sources */,
 				53D418932AC70AB10070ADB1 /* AccountDetailView.swift in Sources */,
 				53D4189F2AC717890070ADB1 /* MoneyTransferViewModel.swift in Sources */,
 				53D4188D2AC709F40070ADB1 /* AppViewModel.swift in Sources */,
+				ACCCD6612BE9378C003FA80C /* MoneyFormatter.swift in Sources */,
 				ACC34DAB2BE23FBE0001CF69 /* AuraAPIService.swift in Sources */,
 				53D418A12AC71B8F0070ADB1 /* View+Extensions.swift in Sources */,
 				ACC34DB12BE2B1480001CF69 /* AuraState.swift in Sources */,

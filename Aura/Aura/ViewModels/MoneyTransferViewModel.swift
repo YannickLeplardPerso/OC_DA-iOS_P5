@@ -17,8 +17,8 @@ class MoneyTransferViewModel: ObservableObject {
             Task{ @MainActor in
                 do{
                     // !!! problème si conversion String de amount échoue, message de transfert ok, avec mauvais montant !!!
-                    // + problème de saisie dans le champ
-                    let isTransferOK = try await AuraAPIService().askForMoneyTransfer(from: auraState.token, to: AuraTransferInfos(recipient: recipient, amount: Double(amount) ?? 0))
+                    // amount a été vérifié
+                    let isTransferOK = try await AuraAPIService().askForMoneyTransfer(from: auraState.token, to: AuraTransferInfos(recipient: recipient, amount: Double(amount)!))
                     if isTransferOK == true {
                         transferMessage = "Successfully transferred \(amount) to \(recipient)"
                     } else {
@@ -32,5 +32,25 @@ class MoneyTransferViewModel: ObservableObject {
         } else {
             transferMessage = "Please enter recipient and amount."
         }
+    }
+    
+    // TODO
+//    static func validations(_ validations: inout Vapor.Validations) {
+//        validations.add("recipient", as: String.self, is: .email || .pattern("^(?:(?:\\+|00)33[\\s.-]{0,3}(?:\\(0\\)[\\s.-]{0,3})?|0)[1-9](?:[\\s.-]?\\d{2}){4}$"))
+//        validations.add("amount", as: Decimal.self, is: .valid)
+//    }
+    // vérifie le montant et le transforme en nombre
+    private func verifyAndTranslate(amount: String) -> Double? {
+        
+        //let x = Double(amount) ?? 
+        
+        return nil
+    }
+    
+    // TODO
+    // vérifie que le format du destinataire est une adresse email valide ou un numéro de téléphone valide français
+    // => créer fonction vérif format email (car utilisé dans Auth View Model) idem pour tél ?
+    private func verifyEmailOrFrenchPhoneNumber(recipient: String) -> Bool {
+        return false
     }
 }
