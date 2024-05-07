@@ -49,8 +49,14 @@ class MoneyTransferViewModel: ObservableObject {
     
     // TODO
     // vérifie que le format du destinataire est une adresse email valide ou un numéro de téléphone valide français
-    // => créer fonction vérif format email (car utilisé dans Auth View Model) idem pour tél ?
-    private func verifyEmailOrFrenchPhoneNumber(recipient: String) -> Bool {
+
+    func verifyEmail(_ email: String) -> Bool {
+        return false
+    }
+    
+    
+    func verifyrenchPhoneNumber(_ phoneNumber: String) -> Bool {
+        // format : 06XXXXXXXX ou 07XXXXXXXX ou +336XXXXXXXX ou 006XXXXXXXX
         return false
     }
 }

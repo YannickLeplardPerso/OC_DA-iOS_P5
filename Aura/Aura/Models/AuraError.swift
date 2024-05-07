@@ -9,4 +9,5 @@ import Foundation
 
 enum AuraError: Error {
     case RequestResponse
+    case InvalidEmail
 }

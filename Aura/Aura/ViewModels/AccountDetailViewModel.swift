@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+struct Transaction {
+    let description: String
+    let amount: String
+}
+
 class AccountDetailViewModel: ObservableObject {
     @Published var totalAmount: String = "€12,345.67"
     @Published var recentTransactions: [Transaction] = [
@@ -15,11 +20,6 @@ class AccountDetailViewModel: ObservableObject {
         Transaction(description: "Amazon Purchase", amount: "-€34.99"),
         Transaction(description: "Salary", amount: "+€2,500.00")
     ]
-    
-    struct Transaction {
-        let description: String
-        let amount: String
-    }
     
     func accountSummary(auraState: AuraState) {
         totalAmount = MoneyFormatter().euros.string(for: auraState.account.currentBalance) ?? ""

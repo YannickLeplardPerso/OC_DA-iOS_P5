@@ -44,8 +44,9 @@ struct AuthenticationView: View {
                     .cornerRadius(8)
                 
                 Button(action: {
-                    // Handle authentication logic here
-                    viewModel.login(auraState: auraState)
+                    if viewModel.emailAndPasswordAreValid() {
+                        viewModel.login(auraState: auraState)
+                    }
                 }) {
                     Text("Se connecter")
                         .foregroundColor(.white)

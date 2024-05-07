@@ -82,6 +82,6 @@ struct AccountDetailView: View {
     }
 }
 
-//#Preview {
+//#Preview {    
 //    AccountDetailView(viewModel: AccountDetailViewModel())
 //}

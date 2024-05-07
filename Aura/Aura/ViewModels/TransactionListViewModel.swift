@@ -15,11 +15,6 @@ class TransactionListViewModel: ObservableObject {
         Transaction(description: "Salary", amount: "+€2,500.00")
     ]
     
-    struct Transaction {
-        let description: String
-        let amount: String
-    }
-    
     func all(auraState: AuraState) {
         transactions = auraState.account.transactions
             .map { transaction in

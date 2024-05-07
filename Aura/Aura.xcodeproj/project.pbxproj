@@ -25,6 +25,7 @@
 		ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */; };
 		ACCCD65F2BE9039A003FA80C /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */; };
 		ACCCD6612BE9378C003FA80C /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */; };
+		ACCCD6632BE94566003FA80C /* AuraCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD6622BE94566003FA80C /* AuraCheck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
+		ACCCD6622BE94566003FA80C /* AuraCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraCheck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				53D418982AC70FD80070ADB1 /* Color+Extensions.swift */,
 				53D418A02AC71B8F0070ADB1 /* View+Extensions.swift */,
 				ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */,
+				ACCCD6622BE94566003FA80C /* AuraCheck.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				53D418952AC70ABF0070ADB1 /* MoneyTransferView.swift in Sources */,
 				53D4189B2AC711990070ADB1 /* AuthenticationViewModel.swift in Sources */,
 				53D4189D2AC715AA0070ADB1 /* AccountDetailViewModel.swift in Sources */,
+				ACCCD6632BE94566003FA80C /* AuraCheck.swift in Sources */,
 				53D418912AC70A920070ADB1 /* AuthenticationView.swift in Sources */,
 				ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */,
 				ACC34DAF2BE269E60001CF69 /* AuraError.swift in Sources */,
