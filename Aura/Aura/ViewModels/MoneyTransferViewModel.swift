@@ -12,6 +12,23 @@ class MoneyTransferViewModel: ObservableObject {
     @Published var amount: String = ""
     @Published var transferMessage: String = ""
     
+    func recipientAndAmountAreValid() -> Bool {
+        // si le destinataire est invalide, on efface les deux champs (recipient et amount)
+        if !AuraCheck.validEmail(recipient) && !AuraCheck.validFrenchPhoneNumber(recipient) {
+            recipient = ""
+            amount = ""
+            transferMessage = "Invalid recipient"
+            return false
+        } 
+        // si le montant est invalide, on efface le champ amount
+        if !AuraCheck.validAmount(amount) {
+            amount = ""
+            transferMessage = "Invalid amount"
+            return false
+        }
+        return true
+    }
+    
     func sendMoney(auraState: AuraState) {
         if !recipient.isEmpty && !amount.isEmpty {
             Task{ @MainActor in
@@ -20,7 +37,7 @@ class MoneyTransferViewModel: ObservableObject {
                     // amount a été vérifié
                     let isTransferOK = try await AuraAPIService().askForMoneyTransfer(from: auraState.token, to: AuraTransferInfos(recipient: recipient, amount: Double(amount)!))
                     if isTransferOK == true {
-                        transferMessage = "Successfully transferred \(amount) to \(recipient)"
+                        transferMessage = "Successfully transferred \(amount) € to \(recipient)"
                     } else {
                         transferMessage = "Error transfer KO"
                     }
@@ -32,31 +49,5 @@ class MoneyTransferViewModel: ObservableObject {
         } else {
             transferMessage = "Please enter recipient and amount."
         }
-    }
-    
-    // TODO
-//    static func validations(_ validations: inout Vapor.Validations) {
-//        validations.add("recipient", as: String.self, is: .email || .pattern("^(?:(?:\\+|00)33[\\s.-]{0,3}(?:\\(0\\)[\\s.-]{0,3})?|0)[1-9](?:[\\s.-]?\\d{2}){4}$"))
-//        validations.add("amount", as: Decimal.self, is: .valid)
-//    }
-    // vérifie le montant et le transforme en nombre
-    private func verifyAndTranslate(amount: String) -> Double? {
-        
-        //let x = Double(amount) ?? 
-        
-        return nil
-    }
-    
-    // TODO
-    // vérifie que le format du destinataire est une adresse email valide ou un numéro de téléphone valide français
-
-    func verifyEmail(_ email: String) -> Bool {
-        return false
-    }
-    
-    
-    func verifyrenchPhoneNumber(_ phoneNumber: String) -> Bool {
-        // format : 06XXXXXXXX ou 07XXXXXXXX ou +336XXXXXXXX ou 006XXXXXXXX
-        return false
     }
 }

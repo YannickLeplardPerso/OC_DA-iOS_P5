@@ -45,7 +45,12 @@ struct AuraTransferInfos: Codable {
 // SERVICE API
 //==================================
 struct AuraAPIService {
+#if targetEnvironment(simulator)
     static private let BASE_URL = "http://127.0.0.1:8080"
+#else
+    static private let BASE_URL = "http://192.168.1.13:8080"
+#endif
+    
     
     // pour vérifier si le service est lancé : la requête doit retourner "It works!" (erreur dans la doc du backend)
     func createIsRunningOkRequest() -> URLRequest {

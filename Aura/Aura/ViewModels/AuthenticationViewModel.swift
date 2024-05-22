@@ -34,14 +34,6 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func login(auraState: AuraState) {
-        Task{ @MainActor in
-            do{
-                auraState.token = try await AuraAPIService().askForAuthenticationToken(for: AuraIdentity(username: username, password: password))
-                onLoginSucceed()
-                auraState.account = try await AuraAPIService().askForDetailedAccount(from: auraState.token)
-            }catch{
-                print("Error AuraAPIService")
-            }
-         }
+        
     }
 }

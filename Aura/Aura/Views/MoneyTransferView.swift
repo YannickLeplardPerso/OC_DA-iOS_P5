@@ -54,7 +54,9 @@ struct MoneyTransferView: View {
                 }
 
                 Button(action:  {
-                    viewModel.sendMoney(auraState: auraState)
+                    if viewModel.recipientAndAmountAreValid() {
+                        viewModel.sendMoney(auraState: auraState)
+                    }
                 }) {
                     HStack {
                         Image(systemName: "arrow.right.circle.fill")

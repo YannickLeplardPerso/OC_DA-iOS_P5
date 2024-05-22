@@ -11,22 +11,34 @@ import Foundation
 
 struct AuraCheck {
     // pour vérifier une adresse email
-    // format : A@B.C avec A = [A-Z0-9a-z._%+-], B = [A-Za-z0-9.-], C = [A-Za-z] et 2 à 64 caractères
+    // format : A@B.C avec A = [A-Z0-9a-z._+-] de longueur max. 64, B = [A-Za-z0-9.-], C = [A-Za-z]
+    // !!! le format n'est pas exhaustif, d'autres caractère sont possibles pour A
+    // aucun test n'est effectué sur la longueur de A, B et C
     static func validEmail(_ email: String) -> Bool {
-        let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let regEx = "[A-Z0-9a-z._+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regEx)
         return predicate.evaluate(with: email)
     }
     
     // pour vérifier une numéro de téléphone français
-    // format : 06XXXXXXXX ou 07XXXXXXXX ou +336XXXXXXXX ou 006XXXXXXXX
+    // format : 0AXXXXXXXX ou +33AXXXXXXXX,  avec A = 6 ou 7
     static func validFrenchPhoneNumber(_ phoneNumber: String) -> Bool {
-        return false
+        // longueur 10 [0-9], commence par 0, suivi de 6 ou 7
+        let regExFr = "0[6-7][0-9]{8}"
+        let predicateFr = NSPredicate(format:"SELF MATCHES %@", regExFr)
+        // longueur 12, commence par +33, suivi de 6 ou 7, suivi de [0-9]
+        let regExInter = "[+]33[6-7][0-9]{8}"
+        let predicateInter = NSPredicate(format:"SELF MATCHES %@", regExInter)
+        
+        return (predicateFr.evaluate(with: phoneNumber) || predicateInter.evaluate(with: phoneNumber))
     }
     
     // pour vérifier si un montant est valide
-    // format : A.B avec A, B chiffres
+    // SUGGESTION : AVOIR UN MONTANT MAX POUR SÉCURISER LES VIREMENTS, PAR EXEMPLE EN DEMANDANT CONFIRMATION AVANT ENVOI DE LA DEMANDE...
     static func validAmount(_ amount: String) -> Bool {
+        if let _ = Double(amount) {
+            return true
+        }
         return false
     }
 }
