@@ -14,6 +14,7 @@ struct AuraCheck {
     // format : A@B.C avec A = [A-Z0-9a-z._+-] de longueur max. 64, B = [A-Za-z0-9.-], C = [A-Za-z]
     // !!! le format n'est pas exhaustif, d'autres caractère sont possibles pour A
     // aucun test n'est effectué sur la longueur de A, B et C
+    // On pourrait utiliser la regex côté serveur (dans Email.swift), mais elle est trop stricte et doit être modifiée.
     static func validEmail(_ email: String) -> Bool {
         let regEx = "[A-Z0-9a-z._+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regEx)
@@ -36,9 +37,22 @@ struct AuraCheck {
     // pour vérifier si un montant est valide
     // SUGGESTION : AVOIR UN MONTANT MAX POUR SÉCURISER LES VIREMENTS, PAR EXEMPLE EN DEMANDANT CONFIRMATION AVANT ENVOI DE LA DEMANDE...
     static func validAmount(_ amount: String) -> Bool {
-        if let _ = Double(amount) {
+        let dotAmount = amount.replacingOccurrences(of: ",", with: ".")
+        if let _ = Double(dotAmount) {
             return true
         }
         return false
+    }
+    
+    static func Amount(_ amount: String) -> Bool {
+        let dotAmount = amount.replacingOccurrences(of: ",", with: ".")
+        if let _ = Double(dotAmount) {
+            return true
+        }
+        return false
+    }
+    // ? le clavier affiche une virgule alors que l'on attend un point pour séparer les décimales
+    static func replaceCommaWithDot(_ amount: String) -> String {
+        return amount.replacingOccurrences(of: ",", with: ".")
     }
 }

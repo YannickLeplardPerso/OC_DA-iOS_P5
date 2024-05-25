@@ -46,11 +46,17 @@ struct AuraTransferInfos: Codable {
 //==================================
 struct AuraAPIService {
 #if targetEnvironment(simulator)
-    static private let BASE_URL = "http://127.0.0.1:8080"
+    static let BASE_URL = "http://127.0.0.1:8080"
 #else
     static private let BASE_URL = "http://192.168.1.13:8080"
 #endif
     
+    // pour pouvoir faire de l'injection de dépendance
+    let session: NetworkSession
+
+    init(session: NetworkSession = URLSession.shared) {
+        self.session = session
+    }
     
     // pour vérifier si le service est lancé : la requête doit retourner "It works!" (erreur dans la doc du backend)
     func createIsRunningOkRequest() -> URLRequest {
@@ -60,7 +66,7 @@ struct AuraAPIService {
     }
     // -> retourne TRUE si le service est lancé (bonne réponse), FALSE sinon
     func isRunningOk() async throws -> Bool {
-        let (data, _) = try await URLSession.shared.data(for: createIsRunningOkRequest())
+        let (data, _) = try await session.data(for: createIsRunningOkRequest())
         
         if String(decoding: data, as: UTF8.self) == "It works!" {
             return true
@@ -83,9 +89,8 @@ struct AuraAPIService {
     // -> retourne un token (optionnel)
     func askForAuthenticationToken(for id: AuraIdentity) async throws -> String {
         // TEMP : à supprimer dès que le serveur backend est configuré pour gérer de vraies identités
-        let pocID = AuraIdentity(username: "test@aura.app", password: "test123")
-        
-        let (data, response) = try await URLSession.shared.data(for: createTokenRequest(for: pocID))
+        // let pocID = AuraIdentity(username: "test@aura.app", password: "test123")
+        let (data, response) = try await session.data(for: createTokenRequest(for: id))
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw AuraError.RequestResponse
         }
@@ -104,7 +109,7 @@ struct AuraAPIService {
     // <- prend un token en paramètre
     // -> retourne le détail du compte associé au token
     func askForDetailedAccount(from token: String) async throws -> AuraAccount {
-        let (data, response) = try await URLSession.shared.data(for: createDetailedAccountRequest(from: token))
+        let (data, response) = try await session.data(for: createDetailedAccountRequest(from: token))
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw AuraError.RequestResponse
         }
@@ -126,7 +131,7 @@ struct AuraAPIService {
     // <- prend un token en paramètre (demandeur) et les informations du transfert (email ou téléphone du destinataire et montant du transfert)
     // -> retourne true si la demande est acceptée
     func askForMoneyTransfer(from token: String, to auraTransferInfos: AuraTransferInfos) async throws -> Bool {
-        let (_, response) = try await URLSession.shared.data(for: createMoneyTransferRequest(from: token, to: auraTransferInfos))
+        let (_, response) = try await session.data(for: createMoneyTransferRequest(from: token, to: auraTransferInfos))
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw AuraError.RequestResponse
         }

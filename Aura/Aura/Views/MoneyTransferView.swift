@@ -73,6 +73,8 @@ struct MoneyTransferView: View {
                 if !viewModel.transferMessage.isEmpty {
                     Text(viewModel.transferMessage)
                         .padding(.top, 20)
+                        .foregroundColor(viewModel.error != .No ? .red : .primary)
+                        .border(viewModel.error == .EmptyPassword ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
                         .transition(.move(edge: .top))
                 }
                 

@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
-        
     @ObservedObject var viewModel: AuthenticationViewModel
     @EnvironmentObject var auraState: AuraState
     
@@ -32,14 +29,19 @@ struct AuthenticationView: View {
                 
                 TextField("Adresse email", text: $viewModel.username)
                     .padding()
+                    .border(viewModel.error == .InvalidEmail ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(8)
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
+//                    .onChange(of: viewModel.username) {
+//                        showErrorUsername = false
+//                    }
                 
                 SecureField("Mot de passe", text: $viewModel.password)
                     .padding()
+                    .border(viewModel.error == .EmptyPassword ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(8)
                 
@@ -54,6 +56,13 @@ struct AuthenticationView: View {
                         .padding()
                         .background(Color.black) // You can also change this to your pastel green color
                         .cornerRadius(8)
+                }
+                
+                // Message
+                if viewModel.error == .RequestResponse {
+                    Text("Erreur authentification")
+                        .padding(.top, 20)
+                        .foregroundStyle(.red)
                 }
             }
             .padding(.horizontal, 40)

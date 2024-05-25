@@ -8,6 +8,13 @@
 import Foundation
 
 enum AuraError: Error {
+    case No
+    case Empty
     case RequestResponse
     case InvalidEmail
+    case EmptyPassword
+    case AuthenticationDenied
+    case InvalidRecipient
+    case InvalidAmount
+    
 }
