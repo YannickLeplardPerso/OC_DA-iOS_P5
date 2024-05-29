@@ -35,9 +35,6 @@ struct AuthenticationView: View {
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
-//                    .onChange(of: viewModel.username) {
-//                        showErrorUsername = false
-//                    }
                 
                 SecureField("Mot de passe", text: $viewModel.password)
                     .padding()
