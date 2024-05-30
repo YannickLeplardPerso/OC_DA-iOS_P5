@@ -29,18 +29,26 @@ struct AuthenticationView: View {
                 
                 TextField("Adresse email", text: $viewModel.username)
                     .padding()
-                    .border(viewModel.error == .InvalidEmail ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
+//                    .border(viewModel.error == .InvalidEmail ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(viewModel.error == .InvalidEmail ? .red : Color(UIColor.secondarySystemBackground), lineWidth: 1)
+                    )
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                 
                 SecureField("Mot de passe", text: $viewModel.password)
                     .padding()
-                    .border(viewModel.error == .EmptyPassword ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
+//                    .border(viewModel.error == .EmptyPassword ? Color.red : Color(UIColor.secondarySystemBackground), width: 1)
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(viewModel.error == .InvalidEmail ? .red : Color(UIColor.secondarySystemBackground), lineWidth: 1)
+                    )
                 
                 Button(action: {
                     if viewModel.emailAndPasswordAreValid() {
