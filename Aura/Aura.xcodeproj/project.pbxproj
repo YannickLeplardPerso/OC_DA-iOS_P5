@@ -26,10 +26,19 @@
 		ACC34DAB2BE23FBE0001CF69 /* AuraAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DAA2BE23FBE0001CF69 /* AuraAPIService.swift */; };
 		ACC34DAF2BE269E60001CF69 /* AuraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DAE2BE269E60001CF69 /* AuraError.swift */; };
 		ACC34DB12BE2B1480001CF69 /* AuraState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC34DB02BE2B1480001CF69 /* AuraState.swift */; };
+		ACC389382C0CA89D0052AB2F /* MockAuraAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC389372C0CA89D0052AB2F /* MockAuraAPIService.swift */; };
 		ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */; };
 		ACCCD65F2BE9039A003FA80C /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */; };
 		ACCCD6612BE9378C003FA80C /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */; };
 		ACCCD6632BE94566003FA80C /* AuraCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCCD6622BE94566003FA80C /* AuraCheck.swift */; };
+		ACDB02FE2C0B118A00A16454 /* AuraCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB02FD2C0B118A00A16454 /* AuraCheckTests.swift */; };
+		ACDB03002C0B153200A16454 /* MoneyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB02FF2C0B153200A16454 /* MoneyFormatterTests.swift */; };
+		ACDB03022C0B169100A16454 /* MoneyTransferViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB03012C0B169100A16454 /* MoneyTransferViewModelTests.swift */; };
+		ACDB03042C0B17D000A16454 /* AuraAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB03032C0B17D000A16454 /* AuraAPIServiceProtocol.swift */; };
+		ACDB03062C0B309700A16454 /* AccountDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDB03052C0B309700A16454 /* AccountDetailViewModelTests.swift */; };
+		ACE58BA42C0B55EA00D72CDB /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE58BA32C0B55EA00D72CDB /* AuthenticationViewModelTests.swift */; };
+		ACE58BA82C0B562200D72CDB /* TransactionListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE58BA72C0B562200D72CDB /* TransactionListViewModelTests.swift */; };
+		ACE8C6442C08D22C0065EA6F /* AppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE8C6432C08D22C0065EA6F /* AppViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,10 +73,19 @@
 		ACC34DAA2BE23FBE0001CF69 /* AuraAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraAPIService.swift; sourceTree = "<group>"; };
 		ACC34DAE2BE269E60001CF69 /* AuraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraError.swift; sourceTree = "<group>"; };
 		ACC34DB02BE2B1480001CF69 /* AuraState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraState.swift; sourceTree = "<group>"; };
+		ACC389372C0CA89D0052AB2F /* MockAuraAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuraAPIService.swift; sourceTree = "<group>"; };
 		ACCCD65C2BE9028F003FA80C /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		ACCCD65E2BE9039A003FA80C /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		ACCCD6602BE9378C003FA80C /* MoneyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
 		ACCCD6622BE94566003FA80C /* AuraCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraCheck.swift; sourceTree = "<group>"; };
+		ACDB02FD2C0B118A00A16454 /* AuraCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraCheckTests.swift; sourceTree = "<group>"; };
+		ACDB02FF2C0B153200A16454 /* MoneyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatterTests.swift; sourceTree = "<group>"; };
+		ACDB03012C0B169100A16454 /* MoneyTransferViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTransferViewModelTests.swift; sourceTree = "<group>"; };
+		ACDB03032C0B17D000A16454 /* AuraAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		ACDB03052C0B309700A16454 /* AccountDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModelTests.swift; sourceTree = "<group>"; };
+		ACE58BA32C0B55EA00D72CDB /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
+		ACE58BA72C0B562200D72CDB /* TransactionListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModelTests.swift; sourceTree = "<group>"; };
+		ACE8C6432C08D22C0065EA6F /* AppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +179,7 @@
 				ACCCD6622BE94566003FA80C /* AuraCheck.swift */,
 				AC8768CD2BFE781D001528D5 /* NetworkSession.swift */,
 				AC8768CF2BFE7898001528D5 /* URLSessionMock.swift */,
+				ACDB03032C0B17D000A16454 /* AuraAPIServiceProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -168,7 +187,15 @@
 		AC8768BA2BFE6E76001528D5 /* AuraTests */ = {
 			isa = PBXGroup;
 			children = (
+				ACC389372C0CA89D0052AB2F /* MockAuraAPIService.swift */,
+				ACDB02FF2C0B153200A16454 /* MoneyFormatterTests.swift */,
+				ACDB02FD2C0B118A00A16454 /* AuraCheckTests.swift */,
 				AC8768BD2BFE6F7A001528D5 /* AuraAPIServiceTests.swift */,
+				ACDB03012C0B169100A16454 /* MoneyTransferViewModelTests.swift */,
+				ACE58BA72C0B562200D72CDB /* TransactionListViewModelTests.swift */,
+				ACDB03052C0B309700A16454 /* AccountDetailViewModelTests.swift */,
+				ACE8C6432C08D22C0065EA6F /* AppViewModelTests.swift */,
+				ACE58BA32C0B55EA00D72CDB /* AuthenticationViewModelTests.swift */,
 			);
 			path = AuraTests;
 			sourceTree = "<group>";
@@ -296,6 +323,7 @@
 				53D418952AC70ABF0070ADB1 /* MoneyTransferView.swift in Sources */,
 				53D4189B2AC711990070ADB1 /* AuthenticationViewModel.swift in Sources */,
 				53D4189D2AC715AA0070ADB1 /* AccountDetailViewModel.swift in Sources */,
+				ACDB03042C0B17D000A16454 /* AuraAPIServiceProtocol.swift in Sources */,
 				ACCCD6632BE94566003FA80C /* AuraCheck.swift in Sources */,
 				53D418912AC70A920070ADB1 /* AuthenticationView.swift in Sources */,
 				ACCCD65D2BE9028F003FA80C /* TransactionListView.swift in Sources */,
@@ -318,7 +346,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8768C62BFE6FF6001528D5 /* AuraTests.swift in Sources */,
+				ACE58BA82C0B562200D72CDB /* TransactionListViewModelTests.swift in Sources */,
+				ACDB03002C0B153200A16454 /* MoneyFormatterTests.swift in Sources */,
+				ACDB02FE2C0B118A00A16454 /* AuraCheckTests.swift in Sources */,
 				AC8768CC2BFE7051001528D5 /* AuraAPIServiceTests.swift in Sources */,
+				ACE58BA42C0B55EA00D72CDB /* AuthenticationViewModelTests.swift in Sources */,
+				ACDB03062C0B309700A16454 /* AccountDetailViewModelTests.swift in Sources */,
+				ACC389382C0CA89D0052AB2F /* MockAuraAPIService.swift in Sources */,
+				ACDB03022C0B169100A16454 /* MoneyTransferViewModelTests.swift in Sources */,
+				ACE8C6442C08D22C0065EA6F /* AppViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

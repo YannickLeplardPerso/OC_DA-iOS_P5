@@ -15,7 +15,10 @@ class AuthenticationViewModel: ObservableObject {
     
     let onLoginSucceed: (() -> ())
     
-    init(_ callback: @escaping () -> ()) {
+    private var apiService: AuraAPIServiceProtocol
+    
+    init(apiService: AuraAPIServiceProtocol = AuraAPIService(), callback: @escaping () -> ()) {
+        self.apiService = apiService
         self.onLoginSucceed = callback
     }
     
@@ -38,9 +41,9 @@ class AuthenticationViewModel: ObservableObject {
     func login(auraState: AuraState) {
         Task{ @MainActor in
             do{
-                auraState.token = try await AuraAPIService().askForAuthenticationToken(for: AuraIdentity(username: username, password: password))
+                auraState.token = try await apiService.askForAuthenticationToken(for: AuraIdentity(username: username, password: password))
                 onLoginSucceed()
-                auraState.account = try await AuraAPIService().askForDetailedAccount(from: auraState.token)
+                auraState.account = try await apiService.askForDetailedAccount(from: auraState.token)
             }catch{
                 self.error = .RequestResponse
             }

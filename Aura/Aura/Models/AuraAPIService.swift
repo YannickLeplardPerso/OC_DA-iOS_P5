@@ -44,7 +44,7 @@ struct AuraTransferInfos: Codable {
 //==================================
 // SERVICE API
 //==================================
-struct AuraAPIService {
+class AuraAPIService: AuraAPIServiceProtocol {
 #if targetEnvironment(simulator)
     static let BASE_URL = "http://127.0.0.1:8080"
 #else

@@ -13,6 +13,12 @@ class MoneyTransferViewModel: ObservableObject {
     @Published var transferMessage: String = ""
     @Published var error: AuraError = .No
     
+    private var apiService: AuraAPIServiceProtocol
+        
+    init(apiService: AuraAPIServiceProtocol = AuraAPIService()) {
+        self.apiService = apiService
+    }
+    
     func recipientAndAmountAreValid() -> Bool {
         // les deux champs doivent être remplis
         if recipient.isEmpty || amount.isEmpty {
@@ -45,7 +51,7 @@ class MoneyTransferViewModel: ObservableObject {
             Task{ @MainActor in
                 do{
                     // !!! problème si conversion String de amount échoue, message de transfert ok, avec mauvais montant !!! AMOUNT doit obligatoirement avoir été vérifié
-                    let isTransferOK = try await AuraAPIService().askForMoneyTransfer(from: auraState.token, to: AuraTransferInfos(recipient: recipient, amount: Double(amount)!))
+                    let isTransferOK = try await apiService.askForMoneyTransfer(from: auraState.token, to: AuraTransferInfos(recipient: recipient, amount: Double(amount)!))
                     if isTransferOK == true {
                         error = .No
                         transferMessage = "Successfully transferred \(amount) € to \(recipient)"
@@ -59,9 +65,5 @@ class MoneyTransferViewModel: ObservableObject {
                     transferMessage = "Error API transfer"
                 }
              }
-//        } else {
-//            error = .Empty
-//            transferMessage = "Please enter recipient and amount."
-//        }
     }
 }
